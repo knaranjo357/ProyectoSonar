@@ -68,6 +68,9 @@ sonarOrdenada(:,62)=[]
 
 [Roca,Metal]= separarTargets(sonarOrdenada,97,111,61)
 %% Medidas Estadisticas
+% <https://www.youtube.com/watch?v=b9wzhv0upH4&list=PLg0Uook28IlczPTfmlmQ_EHndY8gbLkTQ&index=11&t=0s 
+% https://www.youtube.com/watch?v=b9wzhv0upH4&list=PLg0Uook28IlczPTfmlmQ_EHndY8gbLkTQ&index=11&t=0s>
+% 
 % media= nanmean();
 % 
 % desviacionEstandar= nanstd();
@@ -83,6 +86,8 @@ sonarOrdenada(:,62)=[]
 medidasEstadisticas_Roca = tablaMedidasEstadisticas(Roca(:,1:60))
 medidasEstadisticas_Metal = tablaMedidasEstadisticas(Metal(:,1:60))
 %% BOXPLOT
+% <https://www.youtube.com/watch?v=uUQQ4Alq-PY&list=PLg0Uook28IlczPTfmlmQ_EHndY8gbLkTQ&index=12&t=0s 
+% https://www.youtube.com/watch?v=uUQQ4Alq-PY&list=PLg0Uook28IlczPTfmlmQ_EHndY8gbLkTQ&index=12&t=0s>
 %     Metal
 
 figure(1)
@@ -99,9 +104,50 @@ hold on
 boxplot(Roca(:,1:60),"Colors","b")
 hold off
 %% Plot
+% <https://www.youtube.com/watch?v=eYHfAg9sXk0&list=PLg0Uook28IlczPTfmlmQ_EHndY8gbLkTQ&index=13&t=0s 
+% https://www.youtube.com/watch?v=eYHfAg9sXk0&list=PLg0Uook28IlczPTfmlmQ_EHndY8gbLkTQ&index=13&t=0s>
 %     Metal
 
 graficasMedidasEstadisticas(medidasEstadisticas_Roca,'roca me1','roca me2')
 graficasMedidasEstadisticas(medidasEstadisticas_Metal,'metal me1','metal me2')
+%% Clasificador por Distancias
+% |'euclidean'|
+% 
+% |'squaredeuclidean'|
+% 
+% |'seuclidean'|
+% 
+% |'mahalanobis'!|
+% 
+% |'cityblock'|
+% 
+% |'minkowski'|
+% 
+% |'chebychev'|
+% 
+% |'cosine'|
+% 
+% |'correlation'|
+% 
+% |'hamming'|
+% 
+% |'jaccard'|
+% 
+% |'spearman'|
+% 
+% |1 =Metal|
+% 
+% |-1=Roca|
+
+% M 1->R x R x
+% R 2->R v R v
+% M 3->M v R x
+% R 4->M x R v
+n=1
+
+D = pdist2(sonarOrdenada(n,1:60),medidasEstadisticas_Metal(1,:),'euclidean')
+D = pdist2(sonarOrdenada(n,1:60),medidasEstadisticas_Roca(1,:),'euclidean')
+
+
 %% 
 %
